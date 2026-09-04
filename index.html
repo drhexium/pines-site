@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#120d16" />
+    <meta name="description" content="Pinebarrow: Fable — a living storybook world with day and night, weather, quests and a village that keeps its own hours." />
+    <title>Pinebarrow: Fable</title>
+    <meta property="og:title" content="Pinebarrow: Fable" />
+    <meta property="og:description" content="Wander a storybook world that grows around you. Days pass, weather turns, and the villagers keep their own hours." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://drhexium.github.io/pines-site/" />
+    <meta property="og:image" content="https://drhexium.github.io/pines-site/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://drhexium.github.io/pines-site/og.png" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23241a2a'/%3E%3Cpath d='M16 5l6 11h-4l5 9H9l5-9h-4z' fill='%23ffd98a'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="/pines-site/assets/main-DCVgR--M.js"></script>
+    <link rel="modulepreload" crossorigin href="/pines-site/assets/three-BYYO6Z1I.js">
+    <link rel="modulepreload" crossorigin href="/pines-site/assets/BufferGeometryUtils-PD7vD99D.js">
+    <link rel="modulepreload" crossorigin href="/pines-site/assets/scatter-Ctg6POva.js">
+    <link rel="modulepreload" crossorigin href="/pines-site/assets/postfx-BUI8ozrN.js">
+    <link rel="stylesheet" crossorigin href="/pines-site/assets/scatter-BGVa5Ei_.css">
+    <link rel="stylesheet" crossorigin href="/pines-site/assets/main-rzmPmKCJ.css">
+  </head>
+  <body>
+    <main class="game-shell" aria-label="Pinebarrow: Fable">
+      <canvas id="game" tabindex="0" aria-label="A wanderer exploring the living world of Pinebarrow"></canvas>
+
+      <button class="mute-button glass-panel" id="mute-toggle" type="button" aria-label="Unmute audio" aria-pressed="true" title="Unmute audio">
+        <span aria-hidden="true">🔇</span><small>Muted</small>
+      </button>
+
+      <div class="hud" id="hud">
+        <header class="brand-panel glass-panel">
+          <p class="eyebrow">The storybook wilds</p>
+          <h1>Pinebarrow</h1>
+          <p class="location" id="location">Pinebarrow Vale</p>
+        </header>
+
+        <div class="clock-panel glass-panel" aria-label="Time and weather">
+          <span class="clock-icon" id="clock-icon" aria-hidden="true">☀</span>
+          <div class="clock-text">
+            <strong id="clock-time">08:40</strong>
+            <small id="clock-day">Day 1 · Morning</small>
+          </div>
+          <div class="weather-badge" id="weather-badge"><span aria-hidden="true">☀</span><small>Clear</small></div>
+        </div>
+
+        <div class="warmth" id="warmth" aria-label="Warmth">
+          <span class="warmth-icon" aria-hidden="true">✷</span>
+          <span class="warmth-bar"><span class="warmth-fill"></span></span>
+          <small class="warmth-label">Warm</small>
+        </div>
+
+        <div class="combat-vitals glass-panel" id="combat-vitals" aria-label="Combat vitals">
+          <div class="vital-row vital-health">
+            <span class="vital-icon" aria-hidden="true">❤</span>
+            <span class="vital-bar"><span class="vital-fill" id="vital-health-fill" style="width: 100%;"></span></span>
+            <small class="vital-val" id="vital-health-val">100</small>
+          </div>
+          <div class="vital-row vital-stamina">
+            <span class="vital-icon" aria-hidden="true">⚡</span>
+            <span class="vital-bar"><span class="vital-fill" id="vital-stamina-fill" style="width: 100%;"></span></span>
+            <small class="vital-val" id="vital-stamina-val">100</small>
+          </div>
+        </div>
+
+        <canvas id="compass" class="compass-strip glass-panel" width="300" height="34" aria-label="Compass"></canvas>
+
+        <div class="top-controls glass-panel" aria-label="World controls">
+          <button class="icon-button" type="button" data-action="teleportBeast" title="Fight Wild Beast"><span aria-hidden="true">⚔</span><small>Beast</small><kbd>8</kbd></button>
+          <button class="icon-button" type="button" data-action="teleportBoss" title="Fight Barrow Colossus Boss"><span aria-hidden="true">👹</span><small>Boss</small><kbd>9</kbd></button>
+          <button class="icon-button" type="button" data-action="weather" aria-label="Change weather"><span aria-hidden="true">☁</span><small>Weather</small><kbd>1</kbd></button>
+          <button class="icon-button" type="button" data-action="fastForward" aria-label="Hold to pass time"><span aria-hidden="true">»</span><small>Time</small><kbd>3</kbd></button>
+          <button class="icon-button" type="button" data-action="photo" aria-label="Photo mode"><span aria-hidden="true">◉</span><small>Photo</small><kbd>P</kbd></button>
+          <button class="icon-button" type="button" data-action="journal" aria-label="Open journal"><span aria-hidden="true">✎</span><small>Journal</small><kbd>J</kbd></button>
+          <button class="icon-button" type="button" data-action="pause" aria-label="Pause"><span aria-hidden="true">Ⅱ</span><small>Menu</small><kbd>Esc</kbd></button>
+        </div>
+
+        <section class="quest-tracker glass-panel" id="quest-tracker" aria-label="Tracked quest">
+          <span class="quest-gem" aria-hidden="true">◆</span>
+          <div class="quest-body">
+            <small id="quest-title">OPEN JOURNAL</small>
+            <ul id="quest-objectives"><li>Follow any road. The world forms ahead of you.</li></ul>
+          </div>
+        </section>
+
+        <canvas id="minimap" class="minimap glass-panel" width="256" height="256" aria-label="Local map"></canvas>
+
+        <div class="movement-help glass-panel" id="movement-help">
+          <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move</span>
+          <span><kbd>Shift</kbd> Sprint</span>
+          <span><kbd>Space</kbd> Jump</span>
+          <span><kbd>C</kbd>/<kbd>Alt</kbd> Dodge</span>
+          <span><kbd>F</kbd>/<kbd>L-Click</kbd> Attack</span>
+          <span><kbd>Q</kbd> Lock-on</span>
+          <span><kbd>E</kbd> Interact</span>
+        </div>
+
+        <div class="touch-controls" id="touch-controls">
+          <div class="joystick" id="joystick" aria-label="Touch movement control"><span id="joystick-stick"></span></div>
+          <div class="touch-actions">
+            <button type="button" class="touch-button touch-sprint" data-touch="sprint" aria-label="Run">Run</button>
+            <button type="button" class="touch-button touch-interact" data-touch="interact" aria-label="Interact">E</button>
+          </div>
+        </div>
+
+        <button class="interaction-prompt glass-panel" id="interaction-prompt" type="button"><kbd>E</kbd> <span>Interact</span></button>
+        <div class="toast-stack" id="toasts" aria-live="polite"></div>
+        <div class="notice" id="notice" aria-live="polite" hidden><small id="notice-kicker">Discovered</small><strong id="notice-title">Somewhere</strong><p id="notice-text"></p></div>
+      </div>
+
+      <section class="dialogue glass-panel" id="dialogue" hidden aria-label="Conversation">
+        <div class="dialogue-portrait" id="dialogue-portrait" aria-hidden="true">M</div>
+        <div class="dialogue-main">
+          <strong class="dialogue-speaker" id="dialogue-speaker">Mira</strong>
+          <p class="dialogue-text" id="dialogue-text"></p>
+          <div class="dialogue-choices" id="dialogue-choices"></div>
+          <small class="dialogue-hint" id="dialogue-hint"><kbd>Space</kbd> continue · <kbd>Esc</kbd> leave</small>
+        </div>
+      </section>
+
+      <section class="panel journal-panel glass-panel" id="journal" hidden aria-label="Journal">
+        <header class="panel-header">
+          <h2>Journal</h2>
+          <nav class="tabs" id="journal-tabs">
+            <button type="button" data-tab="quests" class="is-active">Quests</button>
+            <button type="button" data-tab="map">Map</button>
+            <button type="button" data-tab="discoveries">Places</button>
+            <button type="button" data-tab="inventory">Satchel</button>
+            <button type="button" data-tab="people">People</button>
+            <button type="button" data-tab="notes">Notes</button>
+          </nav>
+          <button type="button" class="close-button" id="journal-close" aria-label="Close journal">✕</button>
+        </header>
+        <div class="panel-body" id="journal-body"></div>
+      </section>
+
+      <section class="overlay title-screen" id="title">
+        <div class="title-card">
+          <p class="eyebrow">A living storybook world</p>
+          <h1 class="title-logo">Pinebarrow</h1>
+          <p class="title-sub">Fable</p>
+          <p class="title-blurb">Days turn, weather rolls in, and the village keeps its own hours. Follow any road; the world forms ahead of you.</p>
+          <div class="title-buttons">
+            <button type="button" class="primary" id="title-continue" hidden>Continue journey</button>
+            <button type="button" class="primary" id="title-new">Begin a new journey</button>
+            <button type="button" class="primary" id="title-fight-beast" style="background: rgba(180, 75, 40, 0.7); border-color: #e17055; color: #ffe3a8;">⚔ Fight Wild Beast (8)</button>
+            <button type="button" class="primary" id="title-fight-boss" style="background: rgba(140, 95, 30, 0.7); border-color: #ffd27a; color: #ffd27a;">👹 Fight Colossus Boss (9)</button>
+            <button type="button" id="title-settings">Settings</button>
+            <button type="button" id="title-controls">Controls</button>
+            <button type="button" id="title-credits">Credits</button>
+          </div>
+          <p class="title-foot" id="title-foot">Sound starts muted.</p>
+        </div>
+      </section>
+
+      <section class="overlay menu" id="pause" hidden aria-label="Pause menu">
+        <div class="menu-card glass-panel">
+          <h2>The story waits</h2>
+          <button type="button" class="primary" id="pause-resume">Resume</button>
+          <button type="button" id="pause-journal">Journal</button>
+          <button type="button" id="pause-settings">Settings</button>
+          <button type="button" id="pause-controls">Controls</button>
+          <button type="button" id="pause-credits">Credits</button>
+          <button type="button" id="pause-save">Save now</button>
+          <button type="button" class="danger" id="pause-quit">Return to title</button>
+          <p class="menu-foot" id="pause-foot"></p>
+        </div>
+      </section>
+
+      <section class="overlay menu" id="credits" hidden aria-label="Credits">
+        <div class="menu-card glass-panel wide">
+          <header class="menu-header"><h2>Pinebarrow: Fable</h2><button type="button" class="close-button" id="credits-close" aria-label="Close credits">✕</button></header>
+          <div class="credits-content" style="margin: 1.2rem 0; line-height: 1.7; font-size: 0.88rem; color: #ede0d0;">
+            <p><strong>Art Direction &amp; World Design</strong>: DrHexium &amp; the Pinebarrow team</p>
+            <p><strong>Living World Systems</strong>: Three.js Procedural PBR, Analytical Water Shader, Dynamic Sky &amp; Weather</p>
+            <p><strong>Procedural Acoustics</strong>: Real-time Synthesized Ambience, Environmental Chimes &amp; Footsteps</p>
+            <p><strong>Technologies</strong>: Three.js, WebGL 2, Vite, Vitest</p>
+            <p style="margin-top: 1rem; color: #bca080; font-style: italic;">"Follow any road; the world forms ahead of you."</p>
+          </div>
+          <div class="menu-actions"><button type="button" class="primary" id="credits-done">Done</button></div>
+        </div>
+      </section>
+
+      <section class="overlay menu" id="settings" hidden aria-label="Settings">
+        <div class="menu-card glass-panel wide">
+          <header class="menu-header"><h2>Settings</h2><button type="button" class="close-button" id="settings-close" aria-label="Close settings">✕</button></header>
+          <form id="settings-form" class="settings-form"></form>
+          <div class="menu-actions"><button type="button" id="settings-reset">Reset to defaults</button><button type="button" class="primary" id="settings-done">Done</button></div>
+        </div>
+      </section>
+
+      <section class="overlay menu" id="controls" hidden aria-label="Controls">
+        <div class="menu-card glass-panel wide">
+          <header class="menu-header"><h2>Controls</h2><button type="button" class="close-button" id="controls-close" aria-label="Close controls">✕</button></header>
+          <div class="controls-grid">
+            <div><h3>Keyboard &amp; Mouse</h3><ul>
+              <li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows — Move</li>
+              <li><kbd>Shift</kbd> — Sprint / Surface Swim</li>
+              <li><kbd>Space</kbd> — Jump / Breaststroke</li>
+              <li><kbd>C</kbd> / <kbd>Alt</kbd> — Dodge roll / Parry window</li>
+              <li><kbd>F</kbd> / <kbd>Left-Click</kbd> — Light Attack combo</li>
+              <li><kbd>R</kbd> / <kbd>Right-Click</kbd> — Heavy Overhead Attack</li>
+              <li><kbd>Q</kbd> / <kbd>V</kbd> — Target Lock-on</li>
+              <li><kbd>E</kbd> / <kbd>Enter</kbd> — Interact / Continue dialogue</li>
+              <li><kbd>1</kbd>–<kbd>4</kbd> — Dialogue choices</li>
+              <li><kbd>J</kbd> / <kbd>Tab</kbd> — Journal &amp; Equipment · <kbd>M</kbd> — Map</li>
+              <li><kbd>P</kbd> — Photo mode · <kbd>Esc</kbd> — Pause menu</li>
+              <li><kbd>8</kbd> / <kbd>9</kbd> — Teleport to Beast / Colossus Boss</li>
+              <li><kbd>F3</kbd> — Performance QA · <kbd>F8</kbd> — Vista shot</li>
+            </ul></div>
+            <div><h3>Gamepad (Tactile Haptics)</h3><ul>
+              <li>Left stick — Move · Right stick — Free camera look</li>
+              <li><span class="controller-glyph glyph-a">A</span> — Interact / Jump / Dialogue continue</li>
+              <li><span class="controller-glyph glyph-b">B</span> — Dodge roll / Evade shockwave</li>
+              <li><span class="controller-glyph glyph-x">X</span> — Light Attack combo</li>
+              <li><span class="controller-glyph glyph-y">Y</span> — Heavy Attack</li>
+              <li><span class="controller-glyph glyph-btn">LB</span> / <span class="controller-glyph glyph-btn">L3</span> — Sprint</li>
+              <li><span class="controller-glyph glyph-btn">R3</span> — Lock-on target</li>
+              <li><span class="controller-glyph glyph-btn">LT</span> / <span class="controller-glyph glyph-btn">RT</span> — Camera zoom in / out</li>
+              <li><span class="controller-glyph glyph-btn">Back</span> — Journal &amp; Equipment · <span class="controller-glyph glyph-btn">Start</span> — Pause</li>
+              <li><em>Dual-Rumble Haptics enabled on strikes, parries, &amp; boss shockwaves</em></li>
+            </ul></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="photo-ui glass-panel" id="photo-ui" hidden>
+        <strong>Photo mode</strong>
+        <span>Drag to frame · <kbd>Enter</kbd> save · <kbd>P</kbd> exit</span>
+        <button type="button" id="photo-capture">Save picture</button>
+        <button type="button" id="photo-exit">Exit</button>
+      </div>
+
+      <pre class="debug-overlay" id="debug" hidden></pre>
+      <div class="fade" id="fade"></div>
+      <div class="loading" id="loading"><div class="loading-mark">✦</div><p>Forming the world…</p></div>
+      <p id="status" class="sr-only" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

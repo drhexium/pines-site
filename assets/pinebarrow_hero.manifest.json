@@ -1,0 +1,377 @@
+{
+  "schemaVersion": 1,
+  "source": "tools/blender/pinebarrow_hero.blend",
+  "generator": "tools/blender/build_assets.py",
+  "coordinateSystem": "glTF Y-up, metres",
+  "compression": {
+    "geometry": "KHR_draco_mesh_compression",
+    "level": 7
+  },
+  "standards": {
+    "floorHeight": 3.0,
+    "doorClearance": {
+      "width": 1.2,
+      "height": 2.1
+    },
+    "interactionAnchorHeight": 0.0
+  },
+  "assets": {
+    "HeroCottage": {
+      "meshCount": 11,
+      "triangleCount": 17388,
+      "lods": {
+        "LOD0": {
+          "meshCount": 11,
+          "triangleCount": 17388,
+          "distance": 0
+        },
+        "LOD1": {
+          "meshCount": 11,
+          "triangleCount": 6620,
+          "distance": 48
+        }
+      },
+      "materials": [
+        "Flower",
+        "Metal",
+        "Moss",
+        "Roof_Shadow",
+        "Roof_Terracotta",
+        "Stone_Dark",
+        "Stone_Warm",
+        "Timber_Dark",
+        "Timber_Mid",
+        "Wall_Warm",
+        "Window_Glow"
+      ],
+      "anchors": {
+        "ANCHOR_Chimney": {
+          "x": 1.15,
+          "y": 5.72,
+          "z": 0.56
+        },
+        "ANCHOR_Door": {
+          "x": -0.65,
+          "y": 0.0,
+          "z": -2.785
+        }
+      },
+      "collisionProxies": {
+        "COL_HeroCottage": {
+          "center": {
+            "x": 0.0,
+            "y": 2.45,
+            "z": -0.0
+          },
+          "size": {
+            "x": 4.6,
+            "y": 4.9,
+            "z": 3.56
+          }
+        }
+      },
+      "blenderBounds": {
+        "min": [
+          -2.9452,
+          -2.9107,
+          -0.6192
+        ],
+        "max": [
+          2.908,
+          3.4405,
+          5.9753
+        ],
+        "size": [
+          5.8533,
+          6.3512,
+          6.5945
+        ]
+      },
+      "webSize": {
+        "x": 5.8533,
+        "y": 6.5945,
+        "z": 6.3512
+      },
+      "triangleBudget": 24000
+    },
+    "HillCastle": {
+      "meshCount": 7,
+      "triangleCount": 8964,
+      "lods": {
+        "LOD0": {
+          "meshCount": 7,
+          "triangleCount": 8964,
+          "distance": 0
+        },
+        "LOD1": {
+          "meshCount": 7,
+          "triangleCount": 3397,
+          "distance": 78
+        }
+      },
+      "materials": [
+        "Castle_Blue",
+        "Castle_Stone",
+        "Flower",
+        "Stone_Dark",
+        "Stone_Warm",
+        "Timber_Dark",
+        "Window_Glow"
+      ],
+      "anchors": {
+        "ANCHOR_Gate": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -1.88
+        }
+      },
+      "collisionProxies": {
+        "COL_HillCastle": {
+          "center": {
+            "x": 0.0,
+            "y": 2.65,
+            "z": -0.0
+          },
+          "size": {
+            "x": 6.2,
+            "y": 5.3,
+            "z": 2.76
+          }
+        }
+      },
+      "blenderBounds": {
+        "min": [
+          -3.25,
+          -1.55,
+          0.0
+        ],
+        "max": [
+          3.25,
+          3.12,
+          8.0963
+        ],
+        "size": [
+          6.5,
+          4.67,
+          8.0963
+        ]
+      },
+      "webSize": {
+        "x": 6.5,
+        "y": 8.0963,
+        "z": 4.67
+      },
+      "triangleBudget": 18000
+    },
+    "StoneBridge": {
+      "meshCount": 3,
+      "triangleCount": 10940,
+      "lods": {
+        "LOD0": {
+          "meshCount": 3,
+          "triangleCount": 10940,
+          "distance": 0
+        },
+        "LOD1": {
+          "meshCount": 3,
+          "triangleCount": 4154,
+          "distance": 42
+        }
+      },
+      "materials": [
+        "Moss",
+        "Stone_Dark",
+        "Stone_Warm"
+      ],
+      "anchors": {
+        "ANCHOR_EastBank": {
+          "x": 2.8,
+          "y": 0.92,
+          "z": -0.0
+        },
+        "ANCHOR_WestBank": {
+          "x": -2.8,
+          "y": 0.92,
+          "z": -0.0
+        }
+      },
+      "collisionProxies": {
+        "COL_BridgeDeck": {
+          "center": {
+            "x": 0.0,
+            "y": 1.18,
+            "z": -0.0
+          },
+          "size": {
+            "x": 5.36,
+            "y": 0.44,
+            "z": 2.04
+          }
+        }
+      },
+      "blenderBounds": {
+        "min": [
+          -3.334,
+          -1.4099,
+          -1.1162
+        ],
+        "max": [
+          3.2,
+          1.4099,
+          3.1811
+        ],
+        "size": [
+          6.5341,
+          2.8198,
+          4.2973
+        ]
+      },
+      "webSize": {
+        "x": 6.5341,
+        "y": 4.2973,
+        "z": 2.8198
+      },
+      "triangleBudget": 14000
+    },
+    "StorybookTree": {
+      "meshCount": 5,
+      "triangleCount": 5248,
+      "lods": {
+        "LOD0": {
+          "meshCount": 5,
+          "triangleCount": 5248,
+          "distance": 0
+        },
+        "LOD1": {
+          "meshCount": 5,
+          "triangleCount": 1990,
+          "distance": 55
+        }
+      },
+      "materials": [
+        "Leaf_Dark",
+        "Leaf_Light",
+        "Leaf_Mid",
+        "Moss",
+        "Timber_Dark"
+      ],
+      "anchors": {
+        "ANCHOR_Trunk": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.0
+        }
+      },
+      "collisionProxies": {
+        "COL_StorybookTreeTrunk": {
+          "center": {
+            "x": 0.0,
+            "y": 1.55,
+            "z": -0.0
+          },
+          "size": {
+            "x": 0.96,
+            "y": 3.1,
+            "z": 0.96
+          }
+        }
+      },
+      "blenderBounds": {
+        "min": [
+          -2.56,
+          -1.8176,
+          -0.3079
+        ],
+        "max": [
+          2.5,
+          2.0176,
+          5.908
+        ],
+        "size": [
+          5.06,
+          3.8352,
+          6.2159
+        ]
+      },
+      "webSize": {
+        "x": 5.06,
+        "y": 6.2159,
+        "z": 3.8352
+      },
+      "triangleBudget": 38000
+    },
+    "VillageSmithy": {
+      "meshCount": 6,
+      "triangleCount": 1448,
+      "lods": {
+        "LOD0": {
+          "meshCount": 6,
+          "triangleCount": 1448,
+          "distance": 0
+        },
+        "LOD1": {
+          "meshCount": 6,
+          "triangleCount": 560,
+          "distance": 44
+        }
+      },
+      "materials": [
+        "Metal",
+        "Roof_Terracotta",
+        "Stone_Dark",
+        "Timber_Dark",
+        "Timber_Mid",
+        "Window_Glow"
+      ],
+      "anchors": {
+        "ANCHOR_Anvil": {
+          "x": 0.62,
+          "y": 0.94,
+          "z": -0.28
+        },
+        "ANCHOR_Forge": {
+          "x": -0.65,
+          "y": 1.05,
+          "z": -0.25
+        }
+      },
+      "collisionProxies": {
+        "COL_VillageSmithy": {
+          "center": {
+            "x": 0.0,
+            "y": 1.35,
+            "z": -0.0
+          },
+          "size": {
+            "x": 4.3,
+            "y": 2.7,
+            "z": 2.96
+          }
+        }
+      },
+      "blenderBounds": {
+        "min": [
+          -2.47,
+          -1.8769,
+          -0.1758
+        ],
+        "max": [
+          2.47,
+          1.8769,
+          3.9
+        ],
+        "size": [
+          4.94,
+          3.7539,
+          4.0758
+        ]
+      },
+      "webSize": {
+        "x": 4.94,
+        "y": 4.0758,
+        "z": 3.7539
+      },
+      "triangleBudget": 8000
+    }
+  }
+}
